@@ -4,9 +4,11 @@ exports.getAllClasses =  function(req,res){
     classService.GetAllClasses(classes => {
       console.log(classes)
       if (classes){
+        res.header({"Access-Control-Allow-Origin": "*"});
           res.status(200).json(classes);
       }
       else{
+        res.header({"Access-Control-Allow-Origin": "*"});
         res.status(404).json({
           message: 'No class available'
         })
@@ -18,12 +20,18 @@ exports.addClass =  function(req,res){
   const classInfo = req.body;
   if( classInfo.className &&  classInfo.teacherName  && classInfo.quantity){
     classService.addClass(classInfo,InsertResuil =>{
-      if(InsertResuil === 200)
+      if(InsertResuil === 200){
+        res.header({"Access-Control-Allow-Origin": "*"});
         res.status(InsertResuil).json("Add new class successful!!!")
-      else
+      }
+      else{
+        res.header({"Access-Control-Allow-Origin": "*"});
         res.status(404).json("Error")
+      }
+       
     })
   }else{
+    res.header({"Access-Control-Allow-Origin": "*"});
     res.status(404).json("Bad request")
   }
 }
