@@ -32,7 +32,7 @@ exports.addClass =  function(req,res){
     })
   }else{
     res.header({"Access-Control-Allow-Origin": "*"});
-    res.status(404).json("Bad request")
+    res.status(400).json("Recheck your submit information")
   }
 }
 
